@@ -1,0 +1,132 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.canvas {
+	width:75%;
+	margin: 0;
+	padding:15px 55px;
+	background-color: #FFF;
+	}
+
+ul {
+	list-style: none; 
+	margin:10px 0 60px 0;
+	padding: 0;
+	}
+
+nav ul li {
+    display: block;
+    margin: 0;
+    font-size: .8em;
+}
+
+
+li {
+	font-size: 1rem;
+	line-height: 1.8rem;
+	font-family: helvetica, arial, sans-serif;
+}
+
+li a {
+	text-decoration: none;
+	color: #444;
+}
+
+.sites li {
+	width: 100%;
+	height: 2rem;
+	position: relative;
+	background-color: #F4F4F4;
+	margin: 2px 0 2px 0;
+	padding: 0;
+	float: left;
+}
+
+.sites li:hover {
+	background-color: #EEE;
+}
+
+
+.icon, .sites img {
+	float: right;
+	font-size: .7rem;
+	display: inline-block;
+	text-indent: -10000px;
+	background-size: 1.2rem;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 2rem;
+	width: 2rem;
+}
+
+.sites img, .sites .no-img {
+	float: left;
+	height: 2rem;
+	width: 2rem;
+	background-color: #EEE;
+}
+
+.sites .no-img {
+	background-color: #999;
+}
+
+
+.wp {
+	background-color: #21759a;
+	background-image: url('/img/icon-wp.png');
+}
+
+.site {
+	padding: 0 10px;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+
+
+@media all and (min-width: 699px) {
+
+	body {
+	    background-color: #DDD;
+	}
+	
+	.canvas {
+		width:80%;
+		margin: 20px auto;
+		box-shadow: 0 0 20px #AAA;
+		}
+	
+	.sites li {
+		width: 45%;
+		height: 2rem;
+		position: relative;
+		background-color: #F4F4F4;
+		margin: 2px 3% 2px 0;
+		padding: 0;
+		float: left;
+	}
+	
+	nav ul li {
+	    display: inline;
+	    margin: 5px 5px 5px 0;
+	    padding: 4px 12px;
+		background-color: #EEE;
+		border-radius: 2px;
+	}
+
+
+
+}
+
+
