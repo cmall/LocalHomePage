@@ -40,7 +40,7 @@
 		        <?php foreach(glob($d) as $file)  {  ?>
 		            
 		            <li><?php
-		            $siteroot = "http://".basename($file).'.'.$dirname.'.local';
+		            $siteroot = "http://".basename($file).'.'.$dirname.'.'.$tld;
 		            
 		            		            
 		            if (file_exists($file.$iconname1)) {
@@ -58,7 +58,7 @@
 		
 		                $wp_dir = $file . '/www/wp-content';
 		                if (is_dir($wp_dir)) {
-		                    echo ' <a class="wp icon" href="http://' . basename($file) . '.sites.local/wp-admin" title="WordPress Admin Page">wp</a>'; 
+		                    echo ' <a class="wp icon" href="http://'.basename($file).'.'.$dirname.'.'.$tld.'/wp-admin" title="WordPress Admin Page">wp</a>'; 
 		                } ?>
 		
 		            </li>
