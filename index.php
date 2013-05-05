@@ -21,10 +21,17 @@
 			        
 			    <nav>
 			    	<ul>
-				    	<li><a href="">Your Web Host Admin</a></li>
-				    	<li><a href="">Your Favourite Cheat Sheet</a></li>
-				    	<li><a href="">Your GitHub Page</a></li>
+				    	<li><a href="<?php echo $webhostadmin_url ?>">Your Web Host Admin</a></li>
+				    	<li><a href="<?php echo $github_url; ?>">GitHub</a></li>
 			    	</ul>
+			    </nav>
+			    
+			    <nav>
+			        <ul>
+			            <?php foreach ( $devtools as $tool ) { ?>
+			            	<li><a href="<?php echo $tool['url']; ?>"><?php echo $tool['name']; ?></a></li>
+			            <?php } ?>
+			        </ul>
 			    </nav>
 			    
 		    </header>
@@ -38,6 +45,8 @@
 		        <ul class="sites <?php echo $dirname ?>">
 		
 		        <?php foreach(glob($d) as $file)  {  ?>
+		        
+		        	<?php if ( in_array( basename($file), $hiddensites ) ) continue; ?>
 		            
 		            <li><?php
 		            $siteroot = "http://".basename($file).'.'.$dirname.'.'.$tld;
@@ -56,7 +65,7 @@
 		                
 		                <?php 
 		
-		                $wp_dir = $file . '/www/wp-content';
+		                $wp_dir = $file . '/wp-content';
 		                if (is_dir($wp_dir)) {
 		                    echo ' <a class="wp icon" href="http://'.basename($file).'.'.$dirname.'.'.$tld.'/wp-admin" title="WordPress Admin Page">wp</a>'; 
 		                } ?>
