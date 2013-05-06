@@ -39,7 +39,8 @@
 		    <content class="cf">
 		    <?php foreach ($dir as $d) { 
 		    $dirsplit = explode('/', $d);
-		    $dirname = $dirsplit[count($dirsplit)-2];		    
+		    $dirname = $dirsplit[count($dirsplit)-2];
+		    $project = basename($file);		    
 		    ?>
 					
 		        <ul class="sites <?php echo $dirname ?>">
@@ -60,9 +61,11 @@
 		            	echo '<span class="no-img"></span>';
 		            }
 		            ?> 
-		            
+		            <?php if ( array_key_exists( basename($file), $displaynames ) ) { ?>
+		            <a class="site" href="<?php echo $siteroot; ?>"><?php echo $displaynames[basename($file)]; ?></a>
+		            <?php } else { ?>
 		            <a class="site" href="<?php echo $siteroot ?>"><?php echo basename($file) ?></a>
-		                
+		            <?php } ?>
 		                <?php 
 		
 		                $wp_dir = $file . '/wp-content';

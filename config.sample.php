@@ -30,6 +30,10 @@ $iconname2 = '/favicon.ico';
 $webhostadmin_url = 'http://my.a2hosting.com/';
 $github_url = 'http://github.com/davidized/';
 
+$displaynames = array(
+//	'dirname' => 'DisplayName',
+	);
+
 $devtools = array(
 //	array( 'name' => '', 'url' => '' ),
 			);
