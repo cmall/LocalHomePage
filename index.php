@@ -73,6 +73,7 @@
 	
 	
 					// Display an icon with a link to the admin area
+					$adminurl = '';
 					// We'll start by checking if the site looks like it's a WordPress site
 					if ( is_dir( $file . '/wp-admin' ) )
 						$adminurl = sprintf( 'http://%1$s/wp-admin', $siteroot );
