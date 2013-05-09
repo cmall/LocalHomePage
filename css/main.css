@@ -129,4 +129,8 @@ li a {
 
 }
 
+.admin {
+	background-color: #000000;
+	background-image: url('/img/icon-gear.png');
+}
 
