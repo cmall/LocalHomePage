@@ -12,7 +12,7 @@ body {
 
 ul {
 	list-style: none; 
-	margin:10px 0 60px 0;
+	margin:10px 0 5px 0;
 	padding: 0;
 	}
 
@@ -129,4 +129,8 @@ li a {
 
 }
 
+.admin {
+	background-color: #000000;
+	background-image: url('/img/icon-gear.png');
+}
 
