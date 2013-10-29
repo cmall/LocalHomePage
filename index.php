@@ -10,57 +10,57 @@
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    
+
     <body>
 
 	    <div class="canvas">
-	    
+
 		    <header>
-		    
+
 			    <h1>My Local Sites</h1>
-			    
+
 			    <nav>
 			        <ul>
-<?php 
+<?php
 			            foreach ( $devtools as $tool ) {
 			            	printf( '<li><a href="%1$s">%2$s</a></li>', $tool['url'], $tool['name'] );
 			            }
 ?>
 			        </ul>
 			    </nav>
-			    
+
 		    </header>
 
 		    <content class="cf">
-<?php 
-		    foreach ( $dir as $d ) { 
+<?php
+		    foreach ( $dir as $d ) {
 			    $dirsplit = explode('/', $d);
-			    $dirname = $dirsplit[count($dirsplit)-2];	    
-					
+			    $dirname = $dirsplit[count($dirsplit)-2];
+
 				printf( '<ul class="sites %1$s">', $dirname );
-		
+
 		        foreach( glob( $d ) as $file )  {
-		        
+
 		        	$project = basename($file);
-		        	
+
 		        	if ( in_array( $project, $hiddensites ) ) continue;
-		            
+
 		            echo '<li>';
-		            
+
 		            $siteroot = sprintf( 'http://%1$s.%2$s.%3$s', $project, $dirname, $tld );
-		            
+
 		            // Display an icon for the site
 		            $icon_output = '<span class="no-img"></span>';
 		            foreach( $icons as $icon ) {
-		            
+
 		            	if ( file_exists( $file . '/' . $icon ) ) {
 		            		$icon_output = sprintf( '<img src="%1$s/%2$s">', $siteroot, $icon );
 		            		break;
 		            	} // if ( file_exists( $file . '/' . $icon ) )
-		            	
+
 		            } // foreach( $icons as $icon )
 		            echo $icon_output;
-		            
+
 		            // Display a link to the site
 		            $displayname = $project;
 		            if ( array_key_exists( $project, $siteoptions ) ) {
@@ -70,14 +70,14 @@
 		            		$displayname = $siteoptions[$project];
 		            }
 		            printf( '<a class="site" href="%1$s">%2$s</a>', $siteroot, $displayname );
-	
-	
+
+
 					// Display an icon with a link to the admin area
 					$adminurl = '';
 					// We'll start by checking if the site looks like it's a WordPress site
 					if ( is_dir( $file . '/wp-admin' ) )
 						$adminurl = sprintf( 'http://%1$s/wp-admin', $siteroot );
-						
+
 					// If the user has defined an adminurl for the project we'll use that instead
 		            if ( is_array( $siteoptions[$project] ) && array_key_exists( 'adminurl', $siteoptions[$project] ) )
 		            	$adminurl = $siteoptions[$project]['adminurl'];
@@ -86,23 +86,23 @@
 		            if ( ! empty( $adminurl ) )
 			            printf( '<a class="%2$s icon" href="%1$s">Admin</a>', $adminurl, is_dir( $file . '/wp-admin' ) ? 'wp' : 'admin' );
 
-		            
+
 		            echo '</li>';
-				
+
 				} // foreach( glob( $d ) as $file )
 
 		        echo '</ul>';
-		        		
+
 		   	} // foreach ( $dir as $d )
 ?>
 			</content>
-			
 
-		    
+
+
 		    <footer class="cf">
 		    <p></p>
 		    </footer>
-		    
+
 	    </div>
     </body>
 </html>
