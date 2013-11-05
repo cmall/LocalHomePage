@@ -79,7 +79,7 @@
 						$adminurl = sprintf( 'http://%1$s/wp-admin', $siteroot );
 
 					// If the user has defined an adminurl for the project we'll use that instead
-		            if ( is_array( $siteoptions[$project] ) && array_key_exists( 'adminurl', $siteoptions[$project] ) )
+		            if (isset($siteoptions[$project]) &&  is_array( $siteoptions[$project] ) && array_key_exists( 'adminurl', $siteoptions[$project] ) )
 		            	$adminurl = $siteoptions[$project]['adminurl'];
 
 		            // If there's an admin url then we'll show it - the icon will depend on whether it looks like WP or not
