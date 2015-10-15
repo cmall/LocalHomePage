@@ -11,6 +11,8 @@
 *  
 */
 
+/** LocalHomePage root **/
+$projroot = './';
 
 /** directory name(s) */
 $dir = array("/Users/username/Sites/*");
