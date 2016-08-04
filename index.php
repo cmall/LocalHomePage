@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php ini_set('display_errors', 'On');?>
 <?php require('config.php'); ?>
 
 <html>
@@ -33,7 +33,9 @@
 
 		    <content class="cf">
 <?php
+        
 		    foreach ( $dir as $d ) {
+          
 			    $dirsplit = explode('/', $d);
 			    $dirname = $dirsplit[count($dirsplit)-2];
 
@@ -41,13 +43,21 @@
 
 		        foreach( glob( $d ) as $file )  {
 
-		        	$project = basename($file);
+		        	$project = basename($file);  
+              
+              //Search for .port* flag flies
+              $portflag = glob( $file . '/.port*');
+              if( $portflag[0] ) {
+                $port = ':' . substr(basename($portflag[0]), 5);
+              } else {
+                $port = '';
+              }
 
 		        	if ( in_array( $project, $hiddensites ) ) continue;
 
 		            echo '<li>';
 
-		            $siteroot = sprintf( 'http://%1$s.%2$s.%3$s', $project, $dirname, $tld );
+		            $siteroot = sprintf( 'http://%1$s.%2$s.%3$s%4$s', $project, $dirname, $tld, $port );
 
 		            // Display an icon for the site
 		            $icon_output = '<span class="no-img"></span>';
@@ -69,7 +79,7 @@
 		            	else
 		            		$displayname = $siteoptions[$project];
 		            }
-		            printf( '<a class="site" href="%1$s">%2$s</a>', $siteroot, $displayname );
+		            printf( '<a class="site" href="%1$s">%2$s</span></a>', $siteroot, $displayname );
 
 
 					// Display an icon with a link to the admin area
