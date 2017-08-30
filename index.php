@@ -39,7 +39,7 @@
 
 				printf( '<ul class="sites %1$s">', $dirname );
 
-		        foreach( glob( $d ) as $file )  {
+		        foreach( glob( $d, GLOB_ONLYDIR ) as $file )  {
 
 		        	$project = basename($file);
 
